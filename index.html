@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Commerce — Business Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">N</div>
+            <div>
+                <b>NOVA</b>
+                <span>COMMERCE</span>
+            </div>
+        </div>
+
+        <div class="menu-title">MAIN</div>
+
+        <nav>
+            <button class="nav-item active" data-page="overview">
+                <span>⌂</span> Overview
+            </button>
+
+            <button class="nav-item" data-page="finance">
+                <span>◈</span> Finance
+            </button>
+
+            <button class="nav-item" data-page="assets">
+                <span>▣</span> Assets
+            </button>
+
+            <button class="nav-item" data-page="valuation">
+                <span>◆</span> Valuation
+            </button>
+
+            <button class="nav-item" data-page="ai">
+                <span>✦</span> AI Advisor
+            </button>
+        </nav>
+
+        <div class="menu-title">MANAGEMENT</div>
+
+        <nav>
+            <button class="nav-item">
+                <span>◉</span> Customers
+            </button>
+
+            <button class="nav-item">
+                <span>◫</span> Reports
+            </button>
+
+            <button class="nav-item">
+                <span>⚙</span> Settings
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="upgrade">
+                <div class="spark">✦</div>
+                <b>Business Pro</b>
+                <p>Advanced analytics enabled</p>
+                <button>Manage plan</button>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+
+            <div>
+                <h1 id="pageTitle">Business Overview</h1>
+                <p id="pageSubtitle">Here's what's happening with your business.</p>
+            </div>
+
+            <div class="header-right">
+
+                <div class="search">
+                    <span>⌕</span>
+                    <input id="globalSearch" type="text" placeholder="Search...">
+                    <kbd>⌘ K</kbd>
+                </div>
+
+                <button class="icon-button">🔔<i></i></button>
+
+                <div class="profile">
+                    <div class="avatar">JS</div>
+                    <div class="profile-text">
+                        <b>Business Admin</b>
+                        <span>Owner</span>
+                    </div>
+                        <span>⌄</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section class="content">
+
+            <!-- DATE + ACTIONS -->
+            <div class="content-top">
+
+                <div>
+                    <span class="period">SEPTEMBER 2026</span>
+                </div>
+
+                <div class="actions">
+                    <button class="secondary-btn" id="refreshBtn">↻ Refresh</button>
+                    <button class="primary-btn" id="reportBtn">＋ Generate Report</button>
+                </div>
+
+            </div>
+
+
+            <!-- KPI CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Revenue</span>
+                        <div class="stat-icon green">↗</div>
+                    </div>
+
+                    <div class="stat-value" id="revenue">$248,680</div>
+
+                    <div class="stat-bottom">
+                        <span class="positive">+18.4%</span>
+                        <span>vs last month</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Net Profit</span>
+                        <div class="stat-icon purple">◆</div>
+                    </div>
+
+                    <div class="stat-value" id="profit">$72,430</div>
+
+                    <div class="stat-bottom">
+                        <span class="positive">+12.7%</span>
+                        <span>vs last month</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Expenses</span>
+                        <div class="stat-icon red">↘</div>
+                    </div>
+
+                    <div class="stat-value" id="expenses">$176,250</div>
+
+                    <div class="stat-bottom">
+                        <span class="negative">+6.2%</span>
+                        <span>vs last month</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Estimated Value</span>
+                        <div class="stat-icon blue">◈</div>
+                    </div>
+
+                    <div class="stat-value" id="valuation">$2.84M</div>
+
+                    <div class="stat-bottom">
+                        <span class="positive">+21.5%</span>
+                        <span>company value</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- MAIN GRID -->
+            <div class="dashboard-grid">
+
+                <!-- CHART -->
+                <div class="panel chart-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Revenue & Profit</h2>
+                            <p>Financial performance over the last 7 months</p>
+                        </div>
+
+                        <select id="chartSelect">
+                            <option value="both">Revenue + Profit</option>
+                            <option value="revenue">Revenue</option>
+                            <option value="profit">Profit</option>
+                        </select>
+
+                    </div>
+
+                    <div class="legend">
+                        <span><i class="revenue-dot"></i> Revenue</span>
+                        <span><i class="profit-dot"></i> Profit</span>
+                    </div>
+
+                    <div class="chart">
+                        <div class="y-axis">
+                            <span>$300k</span>
+                            <span>$225k</span>
+                            <span>$150k</span>
+                            <span>$75k</span>
+                            <span>$0</span>
+                        </div>
+
+                        <div class="chart-area" id="chartArea">
+
+                            <div class="grid-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <svg viewBox="0 0 700 280" preserveAspectRatio="none">
+
+                                <defs>
+                                    <linearGradient id="revenueGradient" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-opacity=".28"/>
+                                        <stop offset="100%" stop-opacity="0"/>
+                                    </linearGradient>
+
+                                    <linearGradient id="profitGradient" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-opacity=".2"/>
+                                        <stop offset="100%" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <path
+                                    class="revenue-fill"
+                                    d="M0 210 L100 180 L200 194 L300 145 L400 155 L500 102 L600 75 L700 60 L700 280 L0 280 Z"
+                                />
+
+                                <path
+                                    class="profit-fill"
+                                    d="M0 248 L100 230 L200 236 L300 210 L400 215 L500 178 L600 165 L700 145 L700 280 L0 280 Z"
+                                />
+
+                                <path
+                                    class="revenue-line"
+                                    d="M0 210 L100 180 L200 194 L300 145 L400 155 L500 102 L600 75 L700 60"
+                                />
+
+                                <path
+                                    class="profit-line"
+                                    d="M0 248 L100 230 L200 236 L300 210 L400 215 L500 178 L600 165 L700 145"
+                                />
+
+                            </svg>
+
+                            <div class="chart-labels">
+                                <span>Mar</span>
+                                <span>Apr</span>
+                                <span>May</span>
+                                <span>Jun</span>
+                                <span>Jul</span>
+                                <span>Aug</span>
+                                <span>Sep</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- FINANCIAL HEALTH -->
+                <div class="panel health-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Financial Health</h2>
+                            <p>Current business indicators</p>
+                        </div>
+                        <span class="status">Healthy</span>
+                    </div>
+
+                    <div class="health-score">
+
+                        <div class="score-circle">
+                            <strong>86</strong>
+                            <span>/100</span>
+                        </div>
+
+                        <div>
+                            <b>Strong position</b>
+                            <p>Your business is performing above average.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="health-item">
+                        <div>
+                            <span>Profit Margin</span>
+                            <b>29.1%</b>
+                        </div>
+                        <div class="progress">
+                            <span style="width:72%"></span>
+                        </div>
+                    </div>
+
+                    <div class="health-item">
+                        <div>
+                            <span>Cash Flow</span>
+                            <b>81%</b>
+                        </div>
+                        <div class="progress">
+                            <span style="width:81%"></span>
+                        </div>
+                    </div>
+
+                    <div class="health-item">
+                        <div>
+                            <span>Asset Efficiency</span>
+                            <b>74%</b>
+                        </div>
+                        <div class="progress">
+                            <span style="width:74%"></span>
+                        </div>
+                    </div>
+
+                    <div class="health-item">
+                        <div>
+                            <span>Growth Rate</span>
+                            <b>68%</b>
+                        </div>
+                        <div class="progress">
+                            <span style="width:68%"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM GRID -->
+            <div class="bottom-grid">
+
+                <!-- ASSETS -->
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Business Assets</h2>
+                            <p>Estimated market valuation</p>
+                        </div>
+
+                        <button class="text-btn" data-page="assets">View all →</button>
+                    </div>
+
+                    <div class="asset-list">
+
+                        <div class="asset">
+                            <div class="asset-icon">🏢</div>
+                            <div class="asset-info">
+                                <b>Head Office</b>
+                                <span>Real Estate</span>
+                            </div>
+                            <strong>$840,000</strong>
+                        </div>
+
+                        <div class="asset">
+                            <div class="asset-icon">💻</div>
+                            <div class="asset-info">
+                                <b>Technology</b>
+                                <span>Equipment</span>
+                            </div>
+                            <strong>$215,400</strong>
+                        </div>
+
+                        <div class="asset">
+                            <div class="asset-icon">📦</div>
+                            <div class="asset-info">
+                                <b>Inventory</b>
+                                <span>Current Assets</span>
+                            </div>
+                            <strong>$368,250</strong>
+                        </div>
+
+                        <div class="asset">
+                            <div class="asset-icon">™</div>
+                            <div class="asset-info">
+                                <b>Brand Value</b>
+                                <span>Intangible Asset</span>
+                            </div>
+                            <strong>$520,000</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI -->
+                <div class="panel ai-panel">
+
+                    <div class="ai-header">
+                        <div class="ai-avatar">✦</div>
+                        <div>
+                            <h2>Nova AI</h2>
+                            <p>Business Intelligence Assistant</p>
+                        </div>
+                        <span class="online"></span>
+                    </div>
+
+                    <div class="ai-insight">
+                        <span>✦</span>
+                        <div>
+                            <b>AI Insight</b>
+                            <p>
+                                Revenue increased 18.4% this month.
+                                Your strongest category is technology.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="ai-actions">
+                        <button data-question="Analyze my profit">Analyze profit</button>
+                        <button data-question="How is my business doing?">Business health</button>
+                        <button data-question="How can I increase revenue?">Growth ideas</button>
+                    </div>
+
+                    <button class="ai-open" data-page="ai">
+                        Open AI Advisor →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- AI MODAL -->
+<div class="modal" id="aiModal">
+
+    <div class="ai-window">
+
+        <div class="ai-window-header">
+            <div class="ai-header">
+                <div class="ai-avatar">✦</div>
+                <div>
+                    <h2>Nova AI Advisor</h2>
+                    <p>Your business intelligence assistant</p>
+                </div>
+            </div>
+
+            <button id="closeAI">×</button>
+        </div>
+
+        <div class="chat" id="chat">
+
+            <div class="message ai">
+                <div class="mini-ai">✦</div>
+                <div>
+                    Hello! I'm Nova AI. I can analyze your revenue, profit,
+                    expenses, valuation and business performance.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="suggestions">
+            <button>Analyze my business</button>
+            <button>Explain my profit</button>
+            <button>Give growth ideas</button>
+        </div>
+
+        <div class="chat-input">
+            <input id="aiInput" placeholder="Ask Nova AI anything about your business...">
+            <button id="sendAI">➤</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- VALUATION MODAL -->
+<div class="modal" id="valuationModal">
+
+    <div class="calculator">
+
+        <button class="close-calculator" id="closeValuation">×</button>
+
+        <div class="calculator-icon">◆</div>
+
+        <h2>Business Valuation</h2>
+        <p>Estimate your business value using revenue and profit.</p>
+
+        <label>Annual Revenue</label>
+        <input id="annualRevenue" type="number" value="2984160">
+
+        <label>Annual Profit</label>
+        <input id="annualProfit" type="number" value="869160">
+
+        <label>Industry Multiple</label>
+        <input id="multiple" type="number" value="3.2" step=".1">
+
+        <button class="calculate" id="calculateValue">
+            Calculate Valuation
+        </button>
+
+        <div class="valuation-result">
+            <span>Estimated Business Value</span>
+            <strong id="valuationResult">$2,781,312</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
